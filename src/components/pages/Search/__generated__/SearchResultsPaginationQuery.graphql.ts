@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<3f59a9152a186e05d492eaea85e54af1>>
+ * @generated SignedSource<<6a1639e129bfadaf1abf3221f7510ed9>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,19 +10,31 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type ContainerQuery$variables = {
+export type SearchResultsPaginationQuery$variables = {
+  count?: number | null;
+  cursor?: string | null;
   keyword: string;
 };
-export type ContainerQuery$data = {
+export type SearchResultsPaginationQuery$data = {
   readonly " $fragmentSpreads": FragmentRefs<"SearchResultsFragment">;
 };
-export type ContainerQuery = {
-  response: ContainerQuery$data;
-  variables: ContainerQuery$variables;
+export type SearchResultsPaginationQuery = {
+  response: SearchResultsPaginationQuery$data;
+  variables: SearchResultsPaginationQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
 var v0 = [
+  {
+    "defaultValue": 5,
+    "kind": "LocalArgument",
+    "name": "count"
+  },
+  {
+    "defaultValue": null,
+    "kind": "LocalArgument",
+    "name": "cursor"
+  },
   {
     "defaultValue": null,
     "kind": "LocalArgument",
@@ -31,9 +43,14 @@ var v0 = [
 ],
 v1 = [
   {
-    "kind": "Literal",
+    "kind": "Variable",
+    "name": "after",
+    "variableName": "cursor"
+  },
+  {
+    "kind": "Variable",
     "name": "first",
-    "value": 5
+    "variableName": "count"
   },
   {
     "kind": "Variable",
@@ -58,10 +75,20 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "ContainerQuery",
+    "name": "SearchResultsPaginationQuery",
     "selections": [
       {
         "args": [
+          {
+            "kind": "Variable",
+            "name": "count",
+            "variableName": "count"
+          },
+          {
+            "kind": "Variable",
+            "name": "cursor",
+            "variableName": "cursor"
+          },
           {
             "kind": "Variable",
             "name": "keyword",
@@ -79,7 +106,7 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "ContainerQuery",
+    "name": "SearchResultsPaginationQuery",
     "selections": [
       {
         "alias": null,
@@ -191,16 +218,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "7da1e34dbcb289a94e6581ca7deb145a",
+    "cacheID": "6cb941d6c7de0e9412253e2bbf6587cd",
     "id": null,
     "metadata": {},
-    "name": "ContainerQuery",
+    "name": "SearchResultsPaginationQuery",
     "operationKind": "query",
-    "text": "query ContainerQuery(\n  $keyword: String!\n) {\n  ...SearchResultsFragment_3IQ5bv\n}\n\nfragment SearchResultsFragment_3IQ5bv on Query {\n  search(first: 5, query: $keyword, type: REPOSITORY) {\n    edges {\n      node {\n        __typename\n        ... on Repository {\n          id\n          name\n        }\n        ... on Node {\n          __isNode: __typename\n          id\n        }\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "query SearchResultsPaginationQuery(\n  $count: Int = 5\n  $cursor: String = null\n  $keyword: String!\n) {\n  ...SearchResultsFragment_2BDVGC\n}\n\nfragment SearchResultsFragment_2BDVGC on Query {\n  search(after: $cursor, first: $count, query: $keyword, type: REPOSITORY) {\n    edges {\n      node {\n        __typename\n        ... on Repository {\n          id\n          name\n        }\n        ... on Node {\n          __isNode: __typename\n          id\n        }\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "52717120e12d0ba1576d6a8d091d25d5";
+(node as any).hash = "ad66b80e9214b5a2e9f389596b2fa511";
 
 export default node;
