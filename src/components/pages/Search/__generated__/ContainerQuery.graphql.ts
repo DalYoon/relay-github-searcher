@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<9b4cf91a3c96c15fbd889bcaa3d43a7d>>
+ * @generated SignedSource<<8c5e98b0f337d2070777cea58c8b1073>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,15 +9,17 @@
 // @ts-nocheck
 
 import { ConcreteRequest, Query } from 'relay-runtime';
-export type AppRepositoryNameQuery$variables = {};
-export type AppRepositoryNameQuery$data = {
+import { FragmentRefs } from "relay-runtime";
+export type ContainerQuery$variables = {};
+export type ContainerQuery$data = {
   readonly repository: {
     readonly name: string;
   } | null;
+  readonly " $fragmentSpreads": FragmentRefs<"PresenterFramgnet">;
 };
-export type AppRepositoryNameQuery = {
-  response: AppRepositoryNameQuery$data;
-  variables: AppRepositoryNameQuery$variables;
+export type ContainerQuery = {
+  response: ContainerQuery$data;
+  variables: ContainerQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
@@ -45,7 +47,7 @@ return {
     "argumentDefinitions": [],
     "kind": "Fragment",
     "metadata": null,
-    "name": "AppRepositoryNameQuery",
+    "name": "ContainerQuery",
     "selections": [
       {
         "alias": null,
@@ -58,6 +60,11 @@ return {
           (v1/*: any*/)
         ],
         "storageKey": "repository(name:\"relay\",owner:\"facebook\")"
+      },
+      {
+        "args": null,
+        "kind": "FragmentSpread",
+        "name": "PresenterFramgnet"
       }
     ],
     "type": "Query",
@@ -67,7 +74,7 @@ return {
   "operation": {
     "argumentDefinitions": [],
     "kind": "Operation",
-    "name": "AppRepositoryNameQuery",
+    "name": "ContainerQuery",
     "selections": [
       {
         "alias": null,
@@ -91,16 +98,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "91a2d37a28396eb1d7dcf20cc01b3d0d",
+    "cacheID": "fb5028390f7a13a0f5f3781a1fca3fa5",
     "id": null,
     "metadata": {},
-    "name": "AppRepositoryNameQuery",
+    "name": "ContainerQuery",
     "operationKind": "query",
-    "text": "query AppRepositoryNameQuery {\n  repository(owner: \"facebook\", name: \"relay\") {\n    name\n    id\n  }\n}\n"
+    "text": "query ContainerQuery {\n  repository(owner: \"facebook\", name: \"relay\") {\n    name\n    id\n  }\n  ...PresenterFramgnet\n}\n\nfragment PresenterFramgnet on Query {\n  repository(owner: \"facebook\", name: \"relay\") {\n    name\n    id\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "9f041295559a43de4cee97435d379fd0";
+(node as any).hash = "5c2c0211fc388c29b2b6b9f4d3df6439";
 
 export default node;
