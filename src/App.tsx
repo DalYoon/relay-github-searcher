@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import RelayEnvironment from "./RelayEnvironment";
 import { RelayEnvironmentProvider } from "react-relay/hooks";
 import AppRouter from "./components/routers/AppRouter";
+import "./globalStyles";
 
 export default function App() {
   return (

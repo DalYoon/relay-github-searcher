@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d34ccc5cea675e485fef34fa7f439f6f>>
+ * @generated SignedSource<<229beea49aabb957242d0fc9fadf08d3>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,20 +10,20 @@
 
 import { ReaderFragment, RefetchableFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type SearchResultsFragment$data = {
+export type SearchResultFragment$data = {
   readonly search: {
     readonly edges: ReadonlyArray<{
       readonly node: {
         readonly id?: string;
-        readonly name?: string;
+        readonly " $fragmentSpreads": FragmentRefs<"ListItemFragment">;
       } | null;
     } | null> | null;
   };
-  readonly " $fragmentType": "SearchResultsFragment";
+  readonly " $fragmentType": "SearchResultFragment";
 };
-export type SearchResultsFragment$key = {
-  readonly " $data"?: SearchResultsFragment$data;
-  readonly " $fragmentSpreads": FragmentRefs<"SearchResultsFragment">;
+export type SearchResultFragment$key = {
+  readonly " $data"?: SearchResultFragment$data;
+  readonly " $fragmentSpreads": FragmentRefs<"SearchResultFragment">;
 };
 
 const node: ReaderFragment = (function(){
@@ -68,10 +68,10 @@ return {
         "path": (v0/*: any*/)
       },
       "fragmentPathInResult": [],
-      "operation": require('./SearchResultsPaginationQuery.graphql')
+      "operation": require('./SearchResultPaginationQuery.graphql')
     }
   },
-  "name": "SearchResultsFragment",
+  "name": "SearchResultFragment",
   "selections": [
     {
       "alias": "search",
@@ -89,7 +89,7 @@ return {
       ],
       "concreteType": "SearchResultItemConnection",
       "kind": "LinkedField",
-      "name": "__SearchResultsFragment_search_connection",
+      "name": "__SearchResultFragment_search_connection",
       "plural": false,
       "selections": [
         {
@@ -119,11 +119,9 @@ return {
                       "storageKey": null
                     },
                     {
-                      "alias": null,
                       "args": null,
-                      "kind": "ScalarField",
-                      "name": "name",
-                      "storageKey": null
+                      "kind": "FragmentSpread",
+                      "name": "ListItemFragment"
                     }
                   ],
                   "type": "Repository",
@@ -183,6 +181,6 @@ return {
 };
 })();
 
-(node as any).hash = "ad66b80e9214b5a2e9f389596b2fa511";
+(node as any).hash = "d87aa9edd9f22dc20c3216681ec503d9";
 
 export default node;

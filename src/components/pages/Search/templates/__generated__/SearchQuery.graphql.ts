@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<6a1639e129bfadaf1abf3221f7510ed9>>
+ * @generated SignedSource<<3e831247387639510308dbde3c34f6e8>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,31 +10,19 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type SearchResultsPaginationQuery$variables = {
-  count?: number | null;
-  cursor?: string | null;
+export type SearchQuery$variables = {
   keyword: string;
 };
-export type SearchResultsPaginationQuery$data = {
-  readonly " $fragmentSpreads": FragmentRefs<"SearchResultsFragment">;
+export type SearchQuery$data = {
+  readonly " $fragmentSpreads": FragmentRefs<"SearchResultFragment">;
 };
-export type SearchResultsPaginationQuery = {
-  response: SearchResultsPaginationQuery$data;
-  variables: SearchResultsPaginationQuery$variables;
+export type SearchQuery = {
+  response: SearchQuery$data;
+  variables: SearchQuery$variables;
 };
 
 const node: ConcreteRequest = (function(){
 var v0 = [
-  {
-    "defaultValue": 5,
-    "kind": "LocalArgument",
-    "name": "count"
-  },
-  {
-    "defaultValue": null,
-    "kind": "LocalArgument",
-    "name": "cursor"
-  },
   {
     "defaultValue": null,
     "kind": "LocalArgument",
@@ -43,14 +31,9 @@ var v0 = [
 ],
 v1 = [
   {
-    "kind": "Variable",
-    "name": "after",
-    "variableName": "cursor"
-  },
-  {
-    "kind": "Variable",
+    "kind": "Literal",
     "name": "first",
-    "variableName": "count"
+    "value": 5
   },
   {
     "kind": "Variable",
@@ -75,20 +58,10 @@ return {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Fragment",
     "metadata": null,
-    "name": "SearchResultsPaginationQuery",
+    "name": "SearchQuery",
     "selections": [
       {
         "args": [
-          {
-            "kind": "Variable",
-            "name": "count",
-            "variableName": "count"
-          },
-          {
-            "kind": "Variable",
-            "name": "cursor",
-            "variableName": "cursor"
-          },
           {
             "kind": "Variable",
             "name": "keyword",
@@ -96,7 +69,7 @@ return {
           }
         ],
         "kind": "FragmentSpread",
-        "name": "SearchResultsFragment"
+        "name": "SearchResultFragment"
       }
     ],
     "type": "Query",
@@ -106,7 +79,7 @@ return {
   "operation": {
     "argumentDefinitions": (v0/*: any*/),
     "kind": "Operation",
-    "name": "SearchResultsPaginationQuery",
+    "name": "SearchQuery",
     "selections": [
       {
         "alias": null,
@@ -148,6 +121,20 @@ return {
                         "args": null,
                         "kind": "ScalarField",
                         "name": "name",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "stargazerCount",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "viewerHasStarred",
                         "storageKey": null
                       }
                     ],
@@ -211,23 +198,23 @@ return {
           "type"
         ],
         "handle": "connection",
-        "key": "SearchResultsFragment_search",
+        "key": "SearchResultFragment_search",
         "kind": "LinkedHandle",
         "name": "search"
       }
     ]
   },
   "params": {
-    "cacheID": "6cb941d6c7de0e9412253e2bbf6587cd",
+    "cacheID": "604e0e1e3a5fe43e615d76c6e5de1de0",
     "id": null,
     "metadata": {},
-    "name": "SearchResultsPaginationQuery",
+    "name": "SearchQuery",
     "operationKind": "query",
-    "text": "query SearchResultsPaginationQuery(\n  $count: Int = 5\n  $cursor: String = null\n  $keyword: String!\n) {\n  ...SearchResultsFragment_2BDVGC\n}\n\nfragment SearchResultsFragment_2BDVGC on Query {\n  search(after: $cursor, first: $count, query: $keyword, type: REPOSITORY) {\n    edges {\n      node {\n        __typename\n        ... on Repository {\n          id\n          name\n        }\n        ... on Node {\n          __isNode: __typename\n          id\n        }\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+    "text": "query SearchQuery(\n  $keyword: String!\n) {\n  ...SearchResultFragment_3IQ5bv\n}\n\nfragment ListItemFragment on Repository {\n  name\n  ...StarButtonFragment\n}\n\nfragment SearchResultFragment_3IQ5bv on Query {\n  search(first: 5, query: $keyword, type: REPOSITORY) {\n    edges {\n      node {\n        __typename\n        ... on Repository {\n          id\n          ...ListItemFragment\n        }\n        ... on Node {\n          __isNode: __typename\n          id\n        }\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment StarButtonFragment on Repository {\n  id\n  stargazerCount\n  viewerHasStarred\n}\n"
   }
 };
 })();
 
-(node as any).hash = "ad66b80e9214b5a2e9f389596b2fa511";
+(node as any).hash = "759b156fc6f61d864fc4c82687009d7a";
 
 export default node;
