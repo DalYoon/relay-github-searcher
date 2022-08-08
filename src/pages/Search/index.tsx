@@ -12,8 +12,8 @@ const Main = styled.div`
   padding: 16px 32px;
 `;
 
-type Props = { keyword: string | null };
-const Container = ({ keyword }: Props) => {
+const Container = () => {
+  const keyword = useQueryParams("keyword");
   switch (keyword) {
     case null:
     case "":
@@ -23,15 +23,14 @@ const Container = ({ keyword }: Props) => {
   }
 };
 
-export default function SearchPage() {
-  const keyword = useQueryParams("keyword");
-  return (
-    <Page>
-      <Main>
-        <Suspense fallback={<h3>Getting Result...</h3>}>
-          <Container keyword={keyword} />
-        </Suspense>
-      </Main>
-    </Page>
-  );
-}
+const SearchPage = () => (
+  <Page>
+    <Main>
+      <Suspense fallback={<h3>Getting Result...</h3>}>
+        <Container />
+      </Suspense>
+    </Main>
+  </Page>
+);
+
+export default SearchPage;
