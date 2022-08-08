@@ -18,11 +18,7 @@ const Container = ({ keyword }: { keyword: string | null }) => {
     case "":
       return <h3>Please input some keyword</h3>;
     default:
-      return (
-        <Suspense fallback={<h3>Getting Result...</h3>}>
-          <Search keyword={keyword} />
-        </Suspense>
-      );
+      return <Search keyword={keyword} />;
   }
 };
 
@@ -31,7 +27,9 @@ export default function SearchPage() {
   return (
     <Page>
       <Main>
-        <Container keyword={keyword} />
+        <Suspense fallback={<h3>Getting Result...</h3>}>
+          <Container keyword={keyword} />
+        </Suspense>
       </Main>
     </Page>
   );
