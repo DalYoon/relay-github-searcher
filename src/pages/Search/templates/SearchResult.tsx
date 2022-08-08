@@ -28,11 +28,22 @@ const Fragment = graphql`
   }
 `;
 
+const Container = styled.div`
+  color: #c9d1d9;
+`;
+
+const Title = styled.div`
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #30363d;
+`;
+
 type Props = {
   query: SearchResultFragment$key;
 };
 
-export default function SearchResult({ query }: Props) {
+const SearchResult = ({ query }: Props) => {
   const { data, loadNext, hasNext } = usePaginationFragment(Fragment, query);
   const {
     search: { edges, repositoryCount },
@@ -54,15 +65,6 @@ export default function SearchResult({ query }: Props) {
       <button onClick={onClickLoadMore}>Load More</button>
     </Container>
   );
-}
+};
 
-const Container = styled.div`
-  color: #c9d1d9;
-`;
-
-const Title = styled.div`
-  font-size: 20px;
-  font-weight: bold;
-  padding-bottom: 16px;
-  border-bottom: 2px solid #30363d;
-`;
+export default SearchResult;

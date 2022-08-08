@@ -10,8 +10,13 @@ const Query = graphql`
   }
 `;
 
-type Props = { keyword: string };
-export default function Search({ keyword }: Props) {
+type Props = {
+  keyword: string;
+};
+
+const Search = ({ keyword }: Props) => {
   const fragmentRefs = useLazyLoadQuery<SearchQuery>(Query, { keyword });
   return <SearchResult query={fragmentRefs} />;
-}
+};
+
+export default Search;

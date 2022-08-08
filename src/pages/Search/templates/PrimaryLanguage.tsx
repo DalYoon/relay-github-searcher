@@ -13,25 +13,6 @@ const Fragment = graphql`
   }
 `;
 
-type Props = {
-  query: PrimaryLanguageFragment$key;
-};
-
-export default function PrimaryLanguage({ query }: Props) {
-  const { primaryLanguage } = useFragment(Fragment, query);
-  const color = primaryLanguage?.color;
-  const name = primaryLanguage?.name;
-
-  if (!name || !color) return null;
-  else
-    return (
-      <Container>
-        <Dot bgColor={color} />
-        {name}
-      </Container>
-    );
-}
-
 const Container = styled.div`
   margin-left: 8px;
   display: flex;
@@ -45,3 +26,24 @@ const Dot = styled.div<{ bgColor: string }>`
   background-color: ${({ bgColor }) => bgColor};
   margin-right: 4px;
 `;
+
+type Props = {
+  query: PrimaryLanguageFragment$key;
+};
+
+const PrimaryLanguage = ({ query }: Props) => {
+  const { primaryLanguage } = useFragment(Fragment, query);
+  const color = primaryLanguage?.color;
+  const name = primaryLanguage?.name;
+
+  if (!name || !color) return null;
+  else
+    return (
+      <Container>
+        <Dot bgColor={color} />
+        {name}
+      </Container>
+    );
+};
+
+export default PrimaryLanguage;

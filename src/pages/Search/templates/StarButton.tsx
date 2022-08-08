@@ -42,8 +42,19 @@ const RemoveMutation = graphql`
   }
 `;
 
-type Props = { query: StarButtonFragment$key };
-export default function StarButton({ query }: Props) {
+const Container = styled.div<{ isHovered: boolean }>`
+  color: ${({ isHovered }) => (isHovered ? "#58a6ff" : "#8b9493")};
+  display: flex;
+  align-items: center;
+  height: 14px;
+  cursor: pointer;
+`;
+
+type Props = {
+  query: StarButtonFragment$key;
+};
+
+const StarButton = ({ query }: Props) => {
   const fragmentRefs = useFragment(Fragment, query);
   const { id, stargazerCount, viewerHasStarred } = fragmentRefs;
 
@@ -82,12 +93,6 @@ export default function StarButton({ query }: Props) {
       {compactNumber(stargazerCount)}
     </Container>
   );
-}
+};
 
-const Container = styled.div<{ isHovered: boolean }>`
-  color: ${({ isHovered }) => (isHovered ? "#58a6ff" : "#8b9493")};
-  display: flex;
-  align-items: center;
-  height: 14px;
-  cursor: pointer;
-`;
+export default StarButton;

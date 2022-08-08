@@ -1,4 +1,4 @@
-export default async function fetchGraphQL(text: string, variables: {[key: string]: any}) {
+const fetchGraphQL = async (text: string, variables: {[key: string]: any}) => {
   const REACT_APP_GITHUB_AUTH_TOKEN = process.env.REACT_APP_GITHUB_AUTH_TOKEN;
   const REACT_APP_GITHUB_API_ENDPOINT = process.env.REACT_APP_GITHUB_API_ENDPOINT || "https://api.github.com/graphql";
 
@@ -16,3 +16,5 @@ export default async function fetchGraphQL(text: string, variables: {[key: strin
 
   return await response.json();
 }
+
+export default fetchGraphQL

@@ -4,12 +4,12 @@ import { RelayEnvironmentProvider } from "react-relay/hooks";
 import AppRouter from "routers/AppRouter";
 import "globalStyles";
 
-export default function App() {
-  return (
-    <RelayEnvironmentProvider environment={RelayEnvironment}>
-      <Suspense fallback={"Loading..."}>
-        <AppRouter />
-      </Suspense>
-    </RelayEnvironmentProvider>
-  );
-}
+const App = () => (
+  <RelayEnvironmentProvider environment={RelayEnvironment}>
+    <Suspense fallback={"Loading..."}>
+      <AppRouter />
+    </Suspense>
+  </RelayEnvironmentProvider>
+);
+
+export default App;
