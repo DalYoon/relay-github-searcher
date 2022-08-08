@@ -22,7 +22,9 @@ export default function Header() {
   const keyword = useQueryParams("keyword");
   return (
     <NavBar>
-      <GithubIcon type={"github"} />
+      <a href="/">
+        <GithubIcon type={"github"} />
+      </a>
       <SearchInput key={keyword} initKeyword={keyword} />
     </NavBar>
   );
