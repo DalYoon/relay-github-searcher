@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import graphql from "babel-plugin-relay/macro";
 import { usePaginationFragment } from "react-relay";
 import ListItem from "./ListItem";
@@ -14,6 +15,7 @@ const Fragment = graphql`
   @refetchable(queryName: "SearchResultPaginationQuery") {
     search(after: $cursor, first: $count, query: $keyword, type: REPOSITORY)
       @connection(key: "SearchResultFragment_search") {
+      repositoryCount
       edges {
         node {
           ... on Repository {
@@ -33,7 +35,7 @@ type Props = {
 export default function SearchResult({ query }: Props) {
   const { data, loadNext, hasNext } = usePaginationFragment(Fragment, query);
   const {
-    search: { edges },
+    search: { edges, repositoryCount },
   } = data;
 
   const onClickLoadMore = () => {
@@ -41,7 +43,8 @@ export default function SearchResult({ query }: Props) {
   };
 
   return (
-    <div>
+    <Container>
+      <Title>{`Showing ${repositoryCount.toLocaleString()} available repository results`}</Title>
       <ul>
         {edges?.map(
           (edge) =>
@@ -49,6 +52,17 @@ export default function SearchResult({ query }: Props) {
         )}
       </ul>
       <button onClick={onClickLoadMore}>Load More</button>
-    </div>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  color: #c9d1d9;
+`;
+
+const Title = styled.div`
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #30363d;
+`;

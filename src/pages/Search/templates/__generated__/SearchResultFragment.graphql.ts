@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<229beea49aabb957242d0fc9fadf08d3>>
+ * @generated SignedSource<<573a6e3a6a8953da3def8f51ab7d3e78>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -18,6 +18,7 @@ export type SearchResultFragment$data = {
         readonly " $fragmentSpreads": FragmentRefs<"ListItemFragment">;
       } | null;
     } | null> | null;
+    readonly repositoryCount: number;
   };
   readonly " $fragmentType": "SearchResultFragment";
 };
@@ -92,6 +93,13 @@ return {
       "name": "__SearchResultFragment_search_connection",
       "plural": false,
       "selections": [
+        {
+          "alias": null,
+          "args": null,
+          "kind": "ScalarField",
+          "name": "repositoryCount",
+          "storageKey": null
+        },
         {
           "alias": null,
           "args": null,
@@ -181,6 +189,6 @@ return {
 };
 })();
 
-(node as any).hash = "d87aa9edd9f22dc20c3216681ec503d9";
+(node as any).hash = "7ef070f13a5091b8b39ee196d14ba740";
 
 export default node;

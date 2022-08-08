@@ -3,7 +3,7 @@ import Icon from "components/atoms/Icon";
 import SearchInput from "components/atoms/SearchInput";
 import useQueryParams from "hooks/useQueryParams";
 
-const NavBar = styled.header`
+const NavBar = styled.nav`
   width: 100%;
   padding: 16px 32px;
   display: flex;

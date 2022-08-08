@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<3e831247387639510308dbde3c34f6e8>>
+ * @generated SignedSource<<7c6b40aabb72d15a2df569f830c173ec>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -92,6 +92,13 @@ return {
           {
             "alias": null,
             "args": null,
+            "kind": "ScalarField",
+            "name": "repositoryCount",
+            "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": null,
             "concreteType": "SearchResultItemEdge",
             "kind": "LinkedField",
             "name": "edges",
@@ -120,7 +127,21 @@ return {
                         "alias": null,
                         "args": null,
                         "kind": "ScalarField",
-                        "name": "name",
+                        "name": "nameWithOwner",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "description",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "url",
                         "storageKey": null
                       },
                       {
@@ -135,6 +156,32 @@ return {
                         "args": null,
                         "kind": "ScalarField",
                         "name": "viewerHasStarred",
+                        "storageKey": null
+                      },
+                      {
+                        "alias": null,
+                        "args": null,
+                        "concreteType": "Language",
+                        "kind": "LinkedField",
+                        "name": "primaryLanguage",
+                        "plural": false,
+                        "selections": [
+                          {
+                            "alias": null,
+                            "args": null,
+                            "kind": "ScalarField",
+                            "name": "color",
+                            "storageKey": null
+                          },
+                          {
+                            "alias": null,
+                            "args": null,
+                            "kind": "ScalarField",
+                            "name": "name",
+                            "storageKey": null
+                          },
+                          (v2/*: any*/)
+                        ],
                         "storageKey": null
                       }
                     ],
@@ -205,12 +252,12 @@ return {
     ]
   },
   "params": {
-    "cacheID": "604e0e1e3a5fe43e615d76c6e5de1de0",
+    "cacheID": "c1160adb8fb9d0e45076329955155297",
     "id": null,
     "metadata": {},
     "name": "SearchQuery",
     "operationKind": "query",
-    "text": "query SearchQuery(\n  $keyword: String!\n) {\n  ...SearchResultFragment_3IQ5bv\n}\n\nfragment ListItemFragment on Repository {\n  name\n  ...StarButtonFragment\n}\n\nfragment SearchResultFragment_3IQ5bv on Query {\n  search(first: 5, query: $keyword, type: REPOSITORY) {\n    edges {\n      node {\n        __typename\n        ... on Repository {\n          id\n          ...ListItemFragment\n        }\n        ... on Node {\n          __isNode: __typename\n          id\n        }\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment StarButtonFragment on Repository {\n  id\n  stargazerCount\n  viewerHasStarred\n}\n"
+    "text": "query SearchQuery(\n  $keyword: String!\n) {\n  ...SearchResultFragment_3IQ5bv\n}\n\nfragment ListItemFragment on Repository {\n  nameWithOwner\n  description\n  url\n  ...StarButtonFragment\n  ...PrimaryLanguageFragment\n}\n\nfragment PrimaryLanguageFragment on Repository {\n  primaryLanguage {\n    color\n    name\n    id\n  }\n}\n\nfragment SearchResultFragment_3IQ5bv on Query {\n  search(first: 5, query: $keyword, type: REPOSITORY) {\n    repositoryCount\n    edges {\n      node {\n        __typename\n        ... on Repository {\n          id\n          ...ListItemFragment\n        }\n        ... on Node {\n          __isNode: __typename\n          id\n        }\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n\nfragment StarButtonFragment on Repository {\n  id\n  stargazerCount\n  viewerHasStarred\n}\n"
   }
 };
 })();

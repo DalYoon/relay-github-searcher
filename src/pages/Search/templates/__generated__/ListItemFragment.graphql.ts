@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<bfe1ec271d21a6fad2f2b351c7adfca1>>
+ * @generated SignedSource<<10b95293700ed5e42cf66bc482d93968>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,8 +11,10 @@
 import { Fragment, ReaderFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type ListItemFragment$data = {
-  readonly name: string;
-  readonly " $fragmentSpreads": FragmentRefs<"StarButtonFragment">;
+  readonly description: string | null;
+  readonly nameWithOwner: string;
+  readonly url: any;
+  readonly " $fragmentSpreads": FragmentRefs<"PrimaryLanguageFragment" | "StarButtonFragment">;
   readonly " $fragmentType": "ListItemFragment";
 };
 export type ListItemFragment$key = {
@@ -30,19 +32,38 @@ const node: ReaderFragment = {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
-      "name": "name",
+      "name": "nameWithOwner",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "description",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "url",
       "storageKey": null
     },
     {
       "args": null,
       "kind": "FragmentSpread",
       "name": "StarButtonFragment"
+    },
+    {
+      "args": null,
+      "kind": "FragmentSpread",
+      "name": "PrimaryLanguageFragment"
     }
   ],
   "type": "Repository",
   "abstractKey": null
 };
 
-(node as any).hash = "fd1ed86f6b8f070a1b37bbb7e63c1149";
+(node as any).hash = "38bc28f9ef79d3f804eaacbfcab06657";
 
 export default node;

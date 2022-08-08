@@ -6,6 +6,7 @@ injectGlobal`
     padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    box-sizing: border-box;
   }
 
   html, body {
