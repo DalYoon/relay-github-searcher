@@ -12,19 +12,17 @@ const Main = styled.div`
   padding: 16px 32px;
 `;
 
-const Presenter = ({ keyword }: { keyword: string }) => (
-  <Suspense fallback={<h3>Getting Result...</h3>}>
-    <Search keyword={keyword} />
-  </Suspense>
-);
-
 const Container = ({ keyword }: { keyword: string | null }) => {
   switch (keyword) {
     case null:
     case "":
       return <h3>Please input some keyword</h3>;
     default:
-      return <Presenter keyword={keyword} />;
+      return (
+        <Suspense fallback={<h3>Getting Result...</h3>}>
+          <Search keyword={keyword} />
+        </Suspense>
+      );
   }
 };
 
