@@ -12,7 +12,8 @@ const Main = styled.div`
   padding: 16px 32px;
 `;
 
-const Container = ({ keyword }: { keyword: string | null }) => {
+type Props = { keyword: string | null };
+const Container = ({ keyword }: Props) => {
   switch (keyword) {
     case null:
     case "":
