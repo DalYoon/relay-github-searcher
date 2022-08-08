@@ -1,5 +1,7 @@
 # Relay Github Searcher
 
+Practice Project to use Relay JS and Github Graphql API
+
 ## Specifications
 
 - Typescript
