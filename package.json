@@ -30,7 +30,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "relay": "relay-compiler",
-    "update-schema": "set -o allexport && source .env && set +o allexport && get-graphql-schema -h \"Authorization=bearer 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\" $REACT_APP_GITHUB_API_ENDPOINT > schema.graphql"
+    "update-schema": "set -o allexport && source .env && set +o allexport && get-graphql-schema -h \"Authorization=bearer $REACT_APP_GITHUB_AUTH_TOKEN\" $REACT_APP_GITHUB_API_ENDPOINT > schema.graphql"
   },
   "eslintConfig": {
     "extends": [
